@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Staff | Whitet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js" type="text/javascript"></script>
+  <script src="/scripts/all.js"></script>
+  <script src="/scripts/themes.js" defer></script>
+  <script src="/scripts/staff.js" defer></script>
+  <script src="/scripts/news.js"></script>
+  <script src="/scripts/preload.js"></script>
+
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="shortcut icon" href="/images/logo.png" />
+
+  <style>
+    .userContainer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .adminBox {
+      position: absolute;
+      font-family: Titan One, sans-serif;
+      color: black;
+      left: 50%;
+      transform: translate(-50%);
+      text-align: center;
+      font-weight: bold;
+      width: 600px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="preloader">
+    <img src="images/logo.png" alt="Preloader Image" class="preloader-image" />
+  </div>
+
+  <div class="styles__background___2J-JA-camelCase">
+    <div class="styles__blooksBackground___3oQ7Y-camelCase" style="
+      background-image: url('/images/ui7.png');
+      animation: animatedBackground 9s linear infinite;
+      -moz-animation: animatedBackground 9s linear infinite;
+      -webkit-animation: animatedBackground 9s linear infinite;
+      -ms-animation: animatedBackground 9s linear infinite;
+      -o-animation: animatedBackground 9s linear infinite;
+    "></div>
+  </div>
+
+  <div class="styles__mNavBar___1OUuw-camelCase">
+    <a href="/" class="styles__blooketText___1pMBG-camelCase">Whitet</a>
+    <i class="fas fa-bars styles__mHamburgerIcon___2Q8oG-camelCase" id="hamburgerToggle"></i>
+  </div>
+
+  <div class="styles__mSidebar___3J45k-camelCase" id="mobileSidebar">
+    <i class="fas fa-times styles__closeIcon___39zL7-camelCase" id="closeSidebar"></i>
+    <div class="nothin"></div>
+    <div class="styles__bottomRow___3OozA-camelCase"></div>
+  </div>
+
+  <div class="styles__sidebar___1XqWi-camelCase">
+    <a href="/" class="styles__blooketText___1pMBG-camelCase">Whitet</a>
+    <div class="nothin"></div>
+    <div class="styles__bottomRow___3OozA-camelCase"></div>
+  </div>
+
+  <div class="styles__topRightRow___dQvxc-camelCase">
+    <div class="styles__profileContainer___CSuIE-camelCase" role="button" tabindex="0">
+      <div class="styles__profileRow___cJa4E-camelCase">
+        <div style="position: relative;" class="styles__blookContainer___36LK2-camelCase styles__profileBlook___37mfP-camelCase">
+          <img src="images/logo.png" id="pfpimg" draggable="false" class="styles__blook___1R6So-camelCase" />
+        </div>
+        <span class="usertxt" id="usernamedrop">user</span>
+      </div>
+      <i class="fas fa-angle-down styles__profileDropdownIcon___3iLIX-camelCase" aria-hidden="true"></i>
+      <div class="styles__profileDropdownMenu___2jUAA-camelCase">
+        <a class="styles__profileDropdownOption___ljZXD-camelCase" href="/logout">
+          <i class="fas fa-sign-out-alt styles__profileDropdownOptionIcon___15VKX-camelCase" aria-hidden="true"></i>Logout
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="arts__profileBody___eNPbH-camelCase">
+    <div class="styles__header___153FZ-camelCase">Staff</div>
+  </div>
+
+  <div class="arts__profileBody___eNPbH-camelCase">
+    <div style="margin-top: 90px;" id="explaination" class="adminBox">
+      <div class="postbackground" id="WIP" style="font-size: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 40px;">
+        <h1 style="font-size: 40px;">Admin Panel</h1>
+        <div>
+          <div id="blook">
+            <h3>Blook Changer</h3>
+            Blook Name: <input id="blookName"><br>
+            Blook Sell Price: <input id="blookPrice" type="number"><br>
+            Blook Rarity: <input id="blookRarity"><br>
+            Blook Image URL: <input id="blookURL"><br>
+            <button id="blookSubmit">Add Blook / Modify Blook</button><br>
+            <button id="blookSubmitRemove">Remove Blook</button>
+          </div>
+          <div id="packs">
+            <h3>Pack Changer</h3>
+            Pack Name: <input id="packName"><br>
+            Blook: <select id="packBlooksAdd"></select><br>
+            Chance: <input id="packBlookChance" type="number"><br>
+            <button id="packSubmit">Add Blook to Pack</button><br>
+            <button id="packSubmitRemove">Remove Blook from Pack</button><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const blookName = document.querySelector('#blookName');
+    const blookSubmit = document.querySelector('#blookSubmit');
+    const blookSubmitRemove = document.querySelector('#blookSubmitRemove');
+    const blookElements = {
+      sellPrice: {
+        element: document.querySelector('#blookPrice'),
+        type: 'number'
+      },
+      rarity: {
+        element: document.querySelector('#blookRarity'),
+        type: 'string'
+      },
+      imageURL: {
+        element: document.querySelector('#blookURL'),
+        type: 'string'
+      }
+    };
+    const packName = document.querySelector("#packName");
+    const packBlooksAdd = document.querySelector("#packBlooksAdd");
+    const packSubmitRemove = document.querySelector("#packSubmitRemove");
+    const packBlookChance = document.querySelector("#packBlookChance");
+    const packSubmit = document.querySelector("#packSubmit");
+    async function load() {
+      let blooks = null;
+      let packs = null;
+      async function updateSelector() {
+        packBlooksAdd.innerHTML = "";
+        blooks = await getBlooks();
+        packs = await getPacks();
+        blooks.forEach((blook) => {
+          const option = document.createElement("option");
+          option.innerText = blook.name;
+          packBlooksAdd.appendChild(option);
+        });
+      }
+      await updateSelector();
+      blookSubmit.addEventListener("click", async () => {
+        if (blookName.value == "") {
+          alert("You must enter a name!");
+          return;
+        }
+        const blookRef = blooks.find(e => e.name == blookName.value);
+        if (!blookRef) {
+          alert("That blook does not exist! Attempting to add...");
+          const vals = reduceKeysToValues(blookElements);
+          const res = await addBlook(blookName.value, vals.imageURL, vals.sellPrice, vals.rarity);
+          if (res.success) {
+            alert("Blook added!");
+          }
+          return;
+        }
+        const res = await modifyBlook(blookName.value, reduceKeysToValues(blookElements));
+        if (res.success) {
+          alert("Blook modified!");
+        }
+      });
+      blookSubmitRemove.addEventListener("click", async () => {
+        if (blookName.value == "") {
+          alert("You must enter a name!");
+          return;
+        }
+        const res = await removeBlook(blookName.value);
+        if (res.success) {
+          alert("Blook removed!");
+          updateSelector();
+        }
+      });
+      packSubmit.addEventListener("click", async () => {
+        if (packName.value == "") {
+          alert("You must specify a pack!");
+          return;
+        }
+        const packToModify = packs.find(e => e.name == packName.value);
+        if (!packToModify) {
+          alert("That pack does not exist!");
+          return;
+        }
+        const newBlook = blooks.find(e => e.name == packBlooksAdd.value);
+        const chance = parseInt(packBlookChance.value);
+        const res = await modifyPack(packToModify._id, {
+          blooks: [
+            ...packToModify.blooks,
+            { blook: newBlook._id, chance }
+          ]
+        });
+        if (res.success) {
+          alert("Blook added to pack!");
+          updateSelector();
+        }
+      });
+      packSubmitRemove.addEventListener("click", async () => {
+        if (packName.value == "") {
+          alert("You must specify a pack!");
+        }
+        const packToModify = packs.find(e => e.name == packName.value);
+        if (!packToModify) {
+          alert("That pack does not exist!");
+          return;
+        }
+        const res = await modifyPack(packToModify._id, {
+          blooks: packToModify.blooks.filter(e => e.blook.name !== packBlooksAdd.value)
+        });
+        if (res.success) {
+          alert("Blook removed from pack!");
+          updateSelector();
+        }
+      });
+    }
+
+    function reduceKeysToValues(inputObj) {
+      let outputObj = {};
+      for (let i in inputObj) {
+        if (inputObj[i].element.value !== "") {
+          switch (inputObj[i].type) {
+            case "number":
+              outputObj[i] = parseInt(inputObj[i].element.value);
+              break;
+            case "string":
+              outputObj[i] = inputObj[i].element.value;
+              break;
+          }
+        }
+      }
+      return outputObj;
+    }
+
+    async function showUsers() {
+      const usersList = await getUsers();
+      const userContainer = createUserContainer();
+      usersList.forEach(user => {
+        userContainer.appendChild(createUserRow(user.name, 0));
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", load);
+  </script>
+</body>
+</html>

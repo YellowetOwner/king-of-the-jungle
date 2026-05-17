@@ -1,0 +1,7 @@
+{
+  "restart": {
+    "exclude": ["^bot/", "^static/"],
+    "include": ["\\.js$"]
+  },
+  "throttle": 100
+}

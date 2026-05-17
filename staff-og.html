@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Staff | Whitet</title>
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js
+    " type="text/javascript"></script>
+	<script src="/scripts/all.js"></script>
+	<script src="/scripts/themes.js"></script>
+	<script defer src="/scripts/admin-og.js"></script>
+	<script src="/scripts/news.js"></script>
+	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css" crossorigin="anonymous" />
+	<link rel="stylesheet" href="css/main.css" />
+	<link rel="shortcut icon" href="/images/logo.png" />
+	<script src="scripts/preload.js"></script>
+	<style>
+	.userContainer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 10px;
+	}
+  .adminBox {
+  position: absolute;
+  font-family: Titan One, sans-serif;
+  color: black;
+  left: 50%;
+  transform: translate(-50%);
+  text-align: center;
+  font-weight: bold;
+  width: 600px;
+}
+	</style>
+</head>
+
+<body>
+	<div class="preloader">
+		<img src="images/logo.png" alt="Preloader Image" class="preloader-image" />
+	</div>
+	<div class="styles__background___2J-JA-camelCase">
+		<div class="styles__blooksBackground___3oQ7Y-camelCase" style="
+                    background-image: url('/images/ui7.png');
+                    animation: animatedBackground 9s linear infinite;
+                    -moz-animation: animatedBackground 9s linear infinite;
+                    -webkit-animation: animatedBackground 9s linear infinite;
+                    -ms-animation: animatedBackground 9s linear infinite;
+                    -o-animation: animatedBackground 9s linear infinite;
+                "></div>
+	</div>
+	<div class="styles__topRightRow___dQvxc-camelCase">
+		<div class="styles__profileContainer___CSuIE-camelCase" role="button" tabindex="0">
+			<div class="styles__profileRow___cJa4E-camelCase">
+				<div style="position: relative;" class="styles__blookContainer___36LK2-camelCase styles__profileBlook___37mfP-camelCase">
+					<img src="images/logo.png" id="pfpimg" draggable="false" class="styles__blook___1R6So-camelCase" />
+				</div>
+				<text class="usertxt" id="usernamedrop">user</text>
+			</div>
+			<i class="fas fa-angle-down styles__profileDropdownIcon___3iLIX-camelCase" aria-hidden="true"></i>
+			<div class="styles__profileDropdownMenu___2jUAA-camelCase">
+				<a class="styles__profileDropdownOption___ljZXD-camelCase" href="/logout"><i class="fas fa-sign-out-alt styles__profileDropdownOptionIcon___15VKX-camelCase" aria-hidden="true"></i>Logout</a>
+			</div>
+		</div>
+	</div>
+	<div class="styles__sidebar___1XqWi-camelCase">
+		<a href="/" class="styles__blooketText___1pMBG-camelCase">Whitet</a>
+		<div class="nothin">
+		</div>
+		<div class="styles__bottomRow___3OozA-camelCase">
+		</div>
+	</div>
+	<div class="arts__profileBody___eNPbH-camelCase">
+		<div class="styles__header___153FZ-camelCase">Staff</div>
+	</div>
+	<div class="arts__profileBody___eNPbH-camelCase">
+		<div style="margin-top: 90px;" id="explaination" class="adminBox">
+			<div class="postbackground" id="WIP" style="font-size: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 40px;">
+<div>
+<h1 style="font-size: 40px;">Admin Panel</h1>
+        </div>
+				<button id="banButton" style="
+                            margin-bottom: 10px;
+                            background-color: #616161;
+                            color: #fff;
+                            border: none;
+                            outline: none;
+                            padding: 5px 10px;
+                            border-radius: 7px;
+                            font-size: 15px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            padding-bottom: 5px;
+                            box-shadow: 0px -5px rgba(0, 0, 0, 0.2) inset, 0px 0px 4px rgba(0, 0, 0, 0.15);
+                            text-align: center;
+                            text-decoration: none;
+                            user-select: none;
+                            transition: 200ms;
+                        ">
+					<i class="fas fa-ban" style="margin-right: 5px;"></i> Ban User </button>
+				<button id="sendAlertBtn" style="
+                            margin-bottom: 10px;
+                            background-color: #616161;
+                            color: #fff;
+                            border: none;
+                            outline: none;
+                            padding: 5px 10px;
+                            border-radius: 7px;
+                            font-size: 15px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            padding-bottom: 5px;
+                            box-shadow: 0px -5px rgba(0, 0, 0, 0.2) inset, 0px 0px 4px rgba(0, 0, 0, 0.15);
+                            text-align: center;
+                            text-decoration: none;
+                            user-select: none;
+                            transition: 200ms;
+                        ">
+					<i class="fas fa-bell" style="margin-right: 5px;"></i> Send Notification </button>
+				<button id="usertokenButton" style="
+                            margin-bottom: 10px;
+                            background-color: #616161;
+                            color: #fff;
+                            border: none;
+                            outline: none;
+                            padding: 5px 10px;
+                            border-radius: 7px;
+                            font-size: 15px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            padding-bottom: 5px;
+                            box-shadow: 0px -5px rgba(0, 0, 0, 0.2) inset, 0px 0px 4px rgba(0, 0, 0, 0.15);
+                            text-align: center;
+                            text-decoration: none;
+                            user-select: none;
+                            transition: 200ms;
+                        ">
+					<i class="fas fa-coins" style="margin-right: 5px;"></i> Add Tokens </button>
+				<button id="userblookButton" style="
+                            background-color: #616161;
+                            color: #fff;
+                            border: none;
+                            outline: none;
+                            padding: 5px 10px;
+                            border-radius: 7px;
+                            font-size: 15px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            padding-bottom: 5px;
+                            box-shadow: 0px -5px rgba(0, 0, 0, 0.2) inset, 0px 0px 4px rgba(0, 0, 0, 0.15);
+                            text-align: center;
+                            text-decoration: none;
+                            user-select: none;
+                            transition: 200ms;
+                        ">
+					<i class="fas fa-box" style="margin-right: 5px;"></i> Add Blooks </button>
+				<hr style="width: 80%; border: 1px solid #616161; margin-bottom: 20px;" />
+				<button id="addNewsButton" style="
+                            margin-bottom: 10px;
+                            background-color: #616161;
+                            color: #fff;
+                            border: none;
+                            outline: none;
+                            padding: 5px 10px;
+                            border-radius: 7px;
+                            font-size: 15px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            padding-bottom: 5px;
+                            box-shadow: 0px -5px rgba(0, 0, 0, 0.2) inset, 0px 0px 4px rgba(0, 0, 0, 0.15);
+                            text-align: center;
+                            text-decoration: none;
+                            user-select: none;
+                            transition: 200ms;
+                        ">
+					<i class="fas fa-newspaper" style="margin-right: 5px;"></i> Add News </button>
+				<button id="addBlooks2Button" style="
+                            margin-bottom: 10px;
+                            background-color: #616161;
+                            color: #fff;
+                            border: none;
+                            outline: none;
+                            padding: 5px 10px;
+                            border-radius: 7px;
+                            font-size: 15px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            padding-bottom: 5px;
+                            box-shadow: 0px -5px rgba(0, 0, 0, 0.2) inset, 0px 0px 4px rgba(0, 0, 0, 0.15);
+                            text-align: center;
+                            text-decoration: none;
+                            user-select: none;
+                            transition: 200ms;
+                        ">
+					<i class="fas fa-box" style="margin-right: 5px;"></i> Add Blooks </button>
+				<button id="addPacksButton" style="
+                            margin-bottom: 10px;
+                            background-color: #616161;
+                            color: #fff;
+                            border: none;
+                            outline: none;
+                            padding: 5px 10px;
+                            border-radius: 7px;
+                            font-size: 15px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            padding-bottom: 5px;
+                            box-shadow: 0px -5px rgba(0, 0, 0, 0.2) inset, 0px 0px 4px rgba(0, 0, 0, 0.15);
+                            text-align: center;
+                            text-decoration: none;
+                            user-select: none;
+                            transition: 200ms;
+                        ">
+					<i class="fas fa-archive" style="margin-right: 5px;"></i> Add Packs </button>
+				<button id="viewUsersButton" style="
+                            background-color: #616161;
+                            color: #fff;
+                            border: none;
+                            outline: none;
+                            padding: 5px 10px;
+                            border-radius: 7px;
+                            font-size: 15px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            padding-bottom: 5px;
+                            box-shadow: 0px -5px rgba(0, 0, 0, 0.2) inset, 0px 0px 4px rgba(0, 0, 0, 0.15);
+                            text-align: center;
+                            text-decoration: none;
+                            user-select: none;
+                            transition: 200ms;
+                            margin-top: 20px;
+                        " onclick="showUsers()">
+					<i class="fas fa-users" style="margin-right: 5px;"></i> View All Users </button>
+				<div id="usersList" style="display: none; width: 100%; margin-top: 20px;"></div>
+			</div>
+		</div>
+	</div>
+	<script>
+const blookName = document.querySelector('#blookName');
+const blookCost = document.querySelector('#blookCost');
+const blookRarity = document.querySelector('#blookRarity');
+const blookURL = document.querySelector('#blookURL');
+const blookSubmit = document.querySelector('#blookSubmit');
+function createUserRow(name, idSuffix) {
+			const row = document.createElement("div");
+			Object.assign(row.style, {
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "space-between",
+				marginBottom: "10px",
+				borderRadius: "7px",
+				backgroundColor: "#616161",
+				color: "#fff",
+				padding: "10px",
+				boxShadow: "0px -5px rgba(0, 0, 0, 0.2) inset, 0px 0px 4px rgba(0, 0, 0, 0.15)"
+			});
+			const img = document.createElement("img");
+			img.src = "images/logo.png";
+			img.style.width = "50px";
+			img.style.height = "50px";
+			img.style.borderRadius = "5px";
+			img.style.marginRight = "10px";
+			const username = document.createElement("span");
+			username.innerText = name;
+			username.style.fontSize = "16px";
+			username.style.marginLeft = "10px";
+			const userInfo = document.createElement("div");
+			userInfo.style.display = "flex";
+			userInfo.style.alignItems = "center";
+
+
+			function makeIconButton(id, iconClass, hoverColor) {
+				const btn = document.createElement("button");
+				btn.id = id;
+				btn.innerHTML = `<i class="${iconClass}"></i>`;
+				Object.assign(btn.style, {
+					backgroundColor: "#444",
+					border: "none",
+					color: "#fff",
+					padding: "5px",
+					borderRadius: "3px",
+					display: "flex",
+					alignItems: "center",
+					marginLeft: id.endsWith("edit") ? "0px" : "5px"
+				});
+				btn.onmouseover = () => (btn.style.backgroundColor = hoverColor);
+				btn.onmouseout = () => (btn.style.backgroundColor = "#444");
+				return btn;
+			}
+			const editBtn = makeIconButton(`editUser${idSuffix}`, "fas fa-edit", "green");
+			const deleteBtn = makeIconButton(`deleteUser${idSuffix}`, "fas fa-trash", "red");
+			const infoBtn = makeIconButton(`infoUser${idSuffix}`, "fas fa-info-circle", "blue");
+			userInfo.append(editBtn, deleteBtn, infoBtn);
+			row.append(img, username, userInfo);
+			return row;
+		}
+function createUserContainer(name, suffix){
+    	const userContainer = document.createElement("div");
+		userContainer.className = "userContainer";
+		userContainer.id = "WIP";
+		userContainer.style.padding = "20px";
+		userContainer.style.width = "100%";
+		const topBar = document.createElement("div");
+		topBar.style.display = "flex";
+		topBar.style.alignItems = "center";
+		topBar.style.justifyContent = "space-between";
+		topBar.style.marginBottom = "10px";
+		const backButton = document.createElement("button");
+		backButton.innerHTML = `<i class="fas fa-arrow-left" style="margin-right: 5px;"></i>Back`;
+		backButton.onclick = () => location.reload();
+		Object.assign(backButton.style, {
+			backgroundColor: "#616161",
+			color: "#fff",
+			border: "none",
+			outline: "none",
+			padding: "5px 10px",
+			borderRadius: "7px",
+			fontSize: "15px",
+			cursor: "pointer",
+			display: "flex",
+			alignItems: "center",
+			paddingBottom: "5px",
+			boxShadow: "0px -5px rgba(0, 0, 0, 0.2) inset, 0px 0px 4px rgba(0, 0, 0, 0.15)",
+			textAlign: "center",
+			textDecoration: "none",
+			userSelect: "none",
+			transition: "200ms",
+			marginRight: "auto"
+		});
+		const filler1 = document.createElement("div");
+		filler1.style.width = "200px";
+		const filler2 = document.createElement("div");
+		filler2.style.width = "100px";
+		topBar.append(backButton, filler1, filler2);
+		userContainer.appendChild(topBar);
+		return userContainer;
+}
+async function showUsers() {
+    const usersList = await getUsers();
+    const userContainer = createUserContainer();
+    usersList.forEach(user=>{
+        userContainer.appendChild(createUserRow(user.name,0));
+    });
+}
+	</script>
+</body>
+
+</html>
