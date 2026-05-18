@@ -18,7 +18,6 @@ function register() {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          localStorage.setItem('token', data.token);
           window.location.replace("/stats");
         } else {
           alert(`Signup not successful: ${data.error}`);
@@ -42,9 +41,7 @@ document.querySelector("#password").addEventListener("keydown", (e) => {
 });
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const token = localStorage.getItem('token');
   const r = await fetch("/api/stats/user", {
-    headers: token ? { 'Authorization': `Bearer ${token}` } : {},
     credentials: 'include'
   });
   const a = await r.json();
