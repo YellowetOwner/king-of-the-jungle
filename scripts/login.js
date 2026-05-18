@@ -11,7 +11,8 @@ function login() {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include'
     })
     .then(response => response.json())
     .then(data => {
@@ -39,7 +40,9 @@ function login() {
   })
   
   document.addEventListener("DOMContentLoaded",async()=>{
-    const r = await fetch("/api/stats/user");
+    const r = await fetch("/api/stats/user", {
+      credentials: 'include'
+    });
     const a = await r.json();
     if (a.success) {
       window.location.replace("/stats")
