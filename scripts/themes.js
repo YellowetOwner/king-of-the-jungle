@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     const themeSelect = document.getElementById('themeSelect');
-    const savedTheme = localStorage.getItem('theme');
     const script2Themes = ["Red", "Blue", "Orange", "Yellow", "Pink", "Black", "Green", "Purple"];
     const allDarkThemes = ["dark", "spooky", ...script2Themes];
     const textStyleId = 'script1-text-color-style';
@@ -67,14 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
       applyInlineBlackFix(allDarkThemes.includes(theme));
     };
   
-    if (savedTheme && !script2Themes.includes(savedTheme)) {
-      document.documentElement.className = savedTheme;
-      if (themeSelect) {
-        themeSelect.value = savedTheme;
-      }
-      updateTextColorForTheme(savedTheme);
-    }
-  
     if (themeSelect) {
       themeSelect.addEventListener('change', function () {
         const script2Styles = document.getElementById('script2-theme-styles');
@@ -82,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
         const selected = this.value;
         document.documentElement.className = selected;
-        localStorage.setItem('theme', selected);
   
         updateTextColorForTheme(selected);
       });
@@ -108,37 +98,37 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>`;
   
     /**
-     * Reads the setting from localStorage and applies the correct background.
+     * Applies the default background (moving) if no other setting exists.
      * This function runs on every page.
      */
     const applyBackgroundSetting = () => {
       const backgroundContainer = document.querySelector('.styles__background___2J-JA-camelCase');
       if (!backgroundContainer) return; // Exit if the background element doesn't exist on this page
   
-      // Default to 'true' (moving) if the setting is not found.
-      const isMoving = localStorage.getItem('movingBackgroundEnabled') !== 'false';
-  
-      if (isMoving) {
-        backgroundContainer.innerHTML = animatedBackgroundHTML;
-      } else {
-        backgroundContainer.innerHTML = staticBackgroundHTML;
-      }
+      // Default to 'true' (moving) - no localStorage check needed
+      backgroundContainer.innerHTML = animatedBackgroundHTML;
     };
   
-    // 1. APPLY aplication on every page load
+    // 1. APPLY application on every page load
     applyBackgroundSetting();
   
     // 2. SETUP the toggle switch (this will only work on the settings page where the toggle exists)
     const backgroundToggle = document.querySelector('.switch input[type="checkbox"]');
     if (backgroundToggle) {
-      // Set the toggle's initial state to match the saved setting
-      backgroundToggle.checked = localStorage.getItem('movingBackgroundEnabled') !== 'false';
+      // Set the toggle's initial state to default (checked)
+      backgroundToggle.checked = true;
   
       // Add a listener to update the setting when the toggle is clicked
       backgroundToggle.addEventListener('change', function() {
         const isEnabled = this.checked;
-        localStorage.setItem('movingBackgroundEnabled', isEnabled);
-        applyBackgroundSetting(); // Re-apply the background immediately
+        if (isEnabled) {
+          applyBackgroundSetting(); // Apply moving background
+        } else {
+          const backgroundContainer = document.querySelector('.styles__background___2J-JA-camelCase');
+          if (backgroundContainer) {
+            backgroundContainer.innerHTML = staticBackgroundHTML;
+          }
+        }
       });
     }
     // --- End of Moving Background Logic ---
@@ -331,9 +321,10 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     };
   
-    const current = localStorage.getItem("theme");
-    if (themes[current]) {
-      applyTheme(themes[current].colors);
+    // Default theme (no localStorage needed)
+    const defaultTheme = "Purple";
+    if (themes[defaultTheme]) {
+      applyTheme(themes[defaultTheme].colors);
     }
   
     const waitDropdown = setInterval(() => {
@@ -359,20 +350,17 @@ document.addEventListener("DOMContentLoaded", () => {
         addOption("Green");
         addOption("Purple");
   
-        dropdown.value = current || "";
+        dropdown.value = defaultTheme;
   
         dropdown.addEventListener("change", () => {
           const theme = dropdown.value;
           if (!theme) {
-            localStorage.removeItem("theme");
-  
             const style = document.getElementById('script2-theme-styles');
             if (style) style.remove();
   
             const blackFix = document.getElementById('inline-black-fix-style');
             if (blackFix) blackFix.remove();
           } else {
-            localStorage.setItem("theme", theme);
             applyTheme(themes[theme].colors);
           }
         });
